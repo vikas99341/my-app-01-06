@@ -8,7 +8,7 @@ node {
         sh "${mvnHome}/bin/mvn clean compile"
     }
     stage('Test') {
-        sh "${mvnHome}/bin/mvn test"
+        s "${mvnHome}/bin/mvn test"
     }
     stage('Package') {
         sh "${mvnHome}/bin/mvn clean package"
