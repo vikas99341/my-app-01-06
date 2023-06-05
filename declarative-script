@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    tools {
+      maven 'mvn_home'
+    }
+    stages {
+        stage('SCM-Checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'git-credentials', 
+				url: 'https://github.com/vikas99341/my-app-01-06.git'
+            }
+        }
+        stage('Clean compile') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }		
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }		
+    }
+
+}
